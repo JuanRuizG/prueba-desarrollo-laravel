@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreProductoRequest extends FormRequest
 {
@@ -28,7 +29,7 @@ class StoreProductoRequest extends FormRequest
             'referencia' => 'required',
             'precio' => 'required|integer|min:100',
             'peso' => 'required|integer|min:1',
-            'categoria_id' => 'required',
+            'categoria_id' => ['required','integer',Rule::in(range(1,13))],
             'stock' => 'required|integer|min:1',
             'fecha_Creacion' => 'required|date',
         ];
@@ -46,6 +47,8 @@ class StoreProductoRequest extends FormRequest
             'peso.integer' => 'El peso debe ser un entero',
             'peso.min' => 'El peso debe ser 1 o mas',
             'categoria_id.required' => 'La categoria es obligatoria',
+            'categoria_id.integer' => 'La categoria debe ser un entero',
+            'categoria_id.in' => 'Debe seleccionar una categoria valida',
             'stock.required' => 'La cantidad del producto obligatorio',
             'stock.integer' => 'La cantidad del producto debe ser un entero',
             'stock.min' => 'La cantidad minima del producto debe ser 1 o mas',
