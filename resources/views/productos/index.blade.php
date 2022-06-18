@@ -13,6 +13,14 @@
 
 			@include('productos.partials.info')
 
+			@if(session('borrado'))
+				<div class="alert alert-danger">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					Producto eliminado con exito, si desea restaurar dar click aqui
+					<a href="{{route('productos.restore',session('borrado'))}}">Restaurar</a>
+				</div>
+			@endif
+
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
