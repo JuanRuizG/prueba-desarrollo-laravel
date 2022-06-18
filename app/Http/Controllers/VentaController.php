@@ -104,7 +104,15 @@ class VentaController extends Controller
 
     public function petitionProcess(Request $request)
     {
-        $datos = $request->validate(['producto_id' => 'required|integer','cantidad_producto' => 'required|integer']);
+        $datos = $request->validate(['producto_id' => 'required|integer|min:1','cantidad_producto' => 'required|integer'],
+            [
+                'producto_id.required' => 'El identificador del Producto es obligatorio',
+                'producto_id.integer' => 'El identificador del Producto debe ser un entero',
+                'producto_id.min' => 'El identificador del Producto deber ser minimo 1 o mas para realizar la busqueda',
+                'cantidad_producto.required' => 'La cantidad del Producto es obligatorio',
+                'cantidad_producto.integer' => 'La cantidad del Producto debe ser un entero',
+            ]
+        );
 
         if (Producto::where('id', $datos['producto_id'])->exists())
         {
