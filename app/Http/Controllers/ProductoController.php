@@ -90,13 +90,6 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $producto->delete();
-
-        return back()->with('borrado',$producto->id);
-    }
-
-    public function restore($id)
-    {
-        Producto::onlyTrashed()->find($id)->restore();
-        return back()->with('info','Producto restaurado con exito');
+        return back()->with('info','Producto eliminado con exito');
     }
 }

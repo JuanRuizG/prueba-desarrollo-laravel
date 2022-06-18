@@ -17,12 +17,11 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('referencia');
-            $table->unsignedInteger('precio');
+            $table->unsignedBigInteger('precio');
             $table->unsignedInteger('peso');
             $table->unsignedInteger('categoria_id');
             $table->unsignedInteger('stock');
             $table->date('fecha_Creacion');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

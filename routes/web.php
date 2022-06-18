@@ -19,7 +19,6 @@ Route::redirect('/', 'productos');
 
 Route::get('ventas/peticion','VentaController@petition')->name('ventas.petition');
 Route::post('ventas/peticion','VentaController@petitionProcess')->name('ventas.petition.process');
-Route::get('productos/restore/{id}','ProductoController@restore')->name('productos.restore');
 
 Route::resource('productos', 'ProductoController');
 Route::resource('ventas', 'VentaController');
