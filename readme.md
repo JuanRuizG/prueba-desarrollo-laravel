@@ -1,4 +1,5 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+
 # Guia de ejecucion del aplicativo
 
 Para poder hacer uso de la pagina realizada se debe tener los siguientes items
