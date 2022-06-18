@@ -32,7 +32,7 @@ Al ejecutar laragon veras un panel con varios botones en la parte inferior, haz 
 
 ## **Base de datos**
 
-En el panel de laragon haga clic en el boton de base de datos y se ejecutara haidy, cree una nueva conexion a la base de datos y tambien una nueva base de datos llamada konecta 
+En el panel de laragon haga clic en el boton de base de datos y se ejecutara HeidiSQL, cree una nueva conexion a la base de datos y tambien una nueva base de datos llamada konecta 
 
 revisar que se haya creado la base de datos konecta, una vez completado esa parte
 
