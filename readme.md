@@ -1,58 +1,125 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Guia de ejecucion del aplicativo
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Para poder hacer uso de la pagina realizada se debe tener los siguientes items
 
-## About Laravel
+## **Instalacion**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Descargar e instalar Laragon (Instale la version Full), dirijirse a la siguiente url para descargalo https://laragon.org/download/index.html
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Una vez instalado laragon traera un paquete de software necesario para su utilizacion y adicionalmente nos creara host virtuales, los proyectos seran almacenamos en la carpeta www y se encuentran en la ruta:
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+- C:\laragon\www
 
-## Learning Laravel
+Para dirigirse a la carpeta ejecute el siguiente comando
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+```bash
+cd C:\laragon\www
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Descargar el repositorio dentro de la carpeta www:
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/JuanRuizG/prueba-desarrollo-laravel.git
+```
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+# **Ejecucion de Laragon**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
 
-## Contributing
+Al ejecutar laragon veras un panel con varios botones en la parte inferior, haz clic en iniciar todo y se mostrara la interfaz de **control de cuentas de Usuario** y da clic en Si, tambien se mostrara una interfaz de permisos de firewall de los permisos necesarios, asegurate que en el panel de laragon se vean todos los servicios en ejecucion.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+## **Base de datos**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+En el panel de laragon haga clic en el boton de base de datos y se ejecutara haidy, cree una nueva conexion a la base de datos y tambien una nueva base de datos llamada konecta 
 
-## License
+revisar que se haya creado la base de datos konecta, una vez completado esa parte
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+abrir el proyecto en el IDE de su preferencia ya sea Sublime Text, Visual Studio Code, PhpStorm, etc
+
+## **IDE y Creacion del archivo .env**
+Una vez seleccionado el IDE de su preferencia abra el archivo .env.example y copie su contenido y cree un archivo .env en la raiz del proyecto y pegue lo que copio del archivo .env.example
+
+Dirijase a esta parte donde veras la configuracion de la base de datos
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=root
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+
+y reemplazela por esta
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=konecta
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+colocar password si lo tiene configurado con contraseña, si no lo tiene dejarlo en blanco
+
+Luego dirijase al panel de laragon y de clic en terminal y dirijase dentro de la carpeta del proyecto y ejecute los siguientes comandos
+
+```bash
+cd C:\laragon\www\NOMBREPROYECTO
+```
+## Instalar dependencias
+
+```bash
+composer install
+```
+
+## Generar clave
+```bash
+php artisan key:generate
+```
+Deberias ver el siguiente mensaje (Ejemplo):
+```
+Application key [base64:Pwy1wa0EFUO3bPCmKKkGAQDGjSdJLDMIvsHGNuwvHUo=] set successfully.
+```
+## Ejecutar migraciones y seeders
+Para ejecutar las migraciones y poblar la bases de datos
+```bash
+php artisan migrate --seed
+```
+
+Visualizara el siguiente resultado 
+```bash
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2022_06_17_202053_create_productos_table
+Migrated:  2022_06_17_202053_create_productos_table
+Migrating: 2022_06_17_202703_create_categorias_table
+Migrated:  2022_06_17_202703_create_categorias_table
+Migrating: 2022_06_17_202853_alter_productos_table
+Migrated:  2022_06_17_202853_alter_productos_table
+Migrating: 2022_06_17_233519_create_ventas_table
+Migrated:  2022_06_17_233519_create_ventas_table
+Seeding: CategoriasTableSeeder
+Seeding: ProductosTableSeeder
+Seeding: VentasTableSeeder
+```
+
+Iniciar el servidor
+```bash
+php artisan serve
+```
+
+Luego de haber ejecutado los comandos anteriores usted podra visuaizar en la consola este mensaje similar
+```bash
+Laravel development server started: <http://127.0.0.1:8000>
+[Sun Jun  17 02:47:39 2022] PHP 7.4.19 Development Server (http://127.0.0.1:8000) started
+```
+ **Aplicacion**
+
+Ahora  la url en el navegador de su preferencia y pegarla para comenzar a usar la aplicacion
